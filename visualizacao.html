@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Logomarca - Visualização</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+    body {
+   
+
+    justify-content: center;
+    align-items: center;
+margin: 0 auto;
+     
+        }
+
+        .container {
+            margin: 0 auto;
+            text-align: ce;
+            width: 100%;
+            max-width: 500px;
+        
+        }
+
+        /* HEADER */
+        .header {
+            align-items: center;
+
+            height: 100%;
+            padding: 6px;
+
+              margin-top: 40px;
+      background-color: #2f959a;    
+
+        width: 70%;
+        }
+
+        .header-left {
+            
+            padding-left: 30px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .header-left h1 {
+            color: white;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        .header-left p {
+            color: white;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+    
+
+        /* INFORMAÇÕES DO CLIENTE */
+        .client-info {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .client-info h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3A8F90;
+            padding-bottom: 5px;
+        }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding: 5px 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+        
+        .info-value {
+            color: #2d3748;
+            text-align: right;
+        }
+
+        /* CARDS DE VISUALIZAÇÃO */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+            margin: 0px 0;
+            margin-top: 10px;
+        }
+
+        .card-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: nowrap;
+        }
+
+        .preview-box {
+            width: 250px;
+            height: 250px;
+            background-color: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .preview-box img {
+            width: 250px;
+            height: 250px;
+            object-fit: contain;
+        }
+
+        .download-btn {
+            background: none;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            color: #3A8F90;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: transform 0.2s;
+            padding: 4px 8px;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .download-btn .arrow {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        /* BOTÃO CARTÃO DE VISITA */
+        .cartao-btn-container {
+            display: flex;
+            justify-content: flex-end;
+            margin: 0px 0;
+        }
+
+        .cartao-btn {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #3A8F90;
+            font-weight: 600;
+            transition: transform 0.2s;
+            padding: 6px 12px;
+        }
+
+        .cartao-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .cartao-btn .arrow {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        /* RODAPÉ */
+        .footer {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+            padding: 20px 0;
+        }
+
+        .footer-logo {
+            width: 90px;
+            height: 40px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            border-radius: 4px;
+        }
+
+        /* LOADING TEMP */
+        .loading-temp {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            z-index: 10000;
+        }
+
+        .bg-image {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bg-image img {
+    width: 500px;
+    height: 700px;
+  
+}
+
+
+
+.logos img{
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
+
+.logos{
+    margin: 0 auto;
+        text-align: center;
+
+}
+.header-right{
+    margin-left: 20px;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+
+        <div style="display: flex;"> 
+        <header class="header">
+            <div class="header-left">
+                <h1 style=' font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;'>Projeto Logomarca</h1>
+
+                <p id="nomeAlunoHeader">Carregando...</p>
+            </div>
+               
+        </header>
+
+         <div class="header-right" onclick="paginainicial()">
+            
+                    <img style="width: 95px; height: 70px; margin-top: 30px; border: 2px solid #817f7f" src="gerar.png" >
+                </div>
+
+            </div>
+
+        <!-- INFORMAÇÕES DO CLIENTE -->
+        <div class="client-info" style="display: none;">
+            <h3>📋 Dados do Cliente</h3>
+            <div class="info-row">
+                <span class="info-label">Nome:</span>
+                <span class="info-value" id="clientName">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Empresa:</span>
+                <span class="info-value" id="clientCompany">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Email:</span>
+                <span class="info-value" id="clientEmail">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Telefone:</span>
+                <span class="info-value" id="clientPhone">-</span>
+            </div>
+        </div>
+
+        <!-- CARDS DE VISUALIZAÇÃO -->
+        <div class="cards-container">
+            <!-- CARD 1 - LOGO COLORIDA -->
+            <div class="card-row">
+                <div class="preview-box" id="previewColorida">
+                    <img id="logoColoridaImg" src="" alt="Logo Colorida" style="display: none;">
+                </div>
+                <button class="download-btn" onclick="baixarLogo('colorida')">
+                    <span style="color: #807f7f">Download Color</span>
+                    <span class="arrow">▼</span>
+                </button>
+            </div>
+
+            <!-- CARD 2 - LOGO PB -->
+            <div class="card-row">
+                <div class="preview-box" id="previewPB">
+                    <img id="logoPBImg" src="" alt="Logo PB" style="display: none;">
+                </div>
+                <button class="download-btn" onclick="baixarLogo('pb')">
+                    <span  style="color: #807f7f">Download PB</span>
+                    <span class="arrow">▼</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- BOTÃO CARTÃO DE VISITA -->
+        <div class="cartao-btn-container">
+            <button class="cartao-btn" onclick="irParaCartao()">
+                <span style="color: #807f7f">Cartão de Visita</span>
+<span class="arrow" style="transform: rotate(270deg);">▼</span>
+
+
+</button>
+        </div>
+
+        
+    </div>
+
+    
+        <div class="logos">
+            <img src="logos.png">
+        </div>
+
+    <script>
+        let clienteAtual = null;
+        let logoPBBase64 = null;
+
+        // Carregar dados do cliente
+        document.addEventListener('DOMContentLoaded', function() {
+            const clienteData = sessionStorage.getItem('clienteData');
+            
+            if (!clienteData) {
+
+                alert('Nenhum dado de cliente encontrado. Volte para a tela inicial.');
+                window.location.href = 'pag1.html';
+                return;
+            }
+
+            clienteAtual = JSON.parse(clienteData);
+            
+            // Atualizar header
+document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clienteAtual);            
+            // Atualizar informações
+            document.getElementById('clientName').textContent = clienteAtual.nome || 'Não informado';
+            document.getElementById('clientCompany').textContent = clienteAtual.empresaNome || clienteAtual.nomeFantasia || 'Não informado';
+            document.getElementById('clientEmail').textContent = clienteAtual.email || 'Não informado';
+            document.getElementById('clientPhone').textContent = clienteAtual.telefone || 'Não informado';
+            
+            // Carregar logos
+            carregarLogos();
+        });
+
+
+        function paginainicial(){
+                            window.location.href = 'pag1.html';
+
+        }
+
+        // Converter para preto e branco
+        async function converterParaPretoBranco(base64) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    ctx.drawImage(img, 0, 0);
+                    
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    const data = imageData.data;
+                    
+                    for (let i = 0; i < data.length; i += 4) {
+                        const red = data[i];
+                        const green = data[i + 1];
+                        const blue = data[i + 2];
+                        
+                        const gray = red * 0.299 + green * 0.587 + blue * 0.114;
+                        
+                        data[i] = gray;
+                        data[i + 1] = gray;
+                        data[i + 2] = gray;
+                    }
+                    
+                    ctx.putImageData(imageData, 0, 0);
+                    resolve(canvas.toDataURL('image/png'));
+                };
+                img.src = base64;
+            });
+        }
+
+        // Carregar logos
+        async function carregarLogos() {
+            const logoColoridaImg = document.getElementById('logoColoridaImg');
+            const logoPBImg = document.getElementById('logoPBImg');
+            
+            if (clienteAtual.logoBase64) {
+                // Mostrar logo colorida
+                logoColoridaImg.src = clienteAtual.logoBase64;
+                logoColoridaImg.style.display = 'block';
+                
+                // Converter e mostrar logo PB
+                logoPBBase64 = await converterParaPretoBranco(clienteAtual.logoBase64);
+                logoPBImg.src = logoPBBase64;
+                logoPBImg.style.display = 'block';
+            } else {
+                // Não tem logo
+                window.location.href = 'semlogo.html';
+
+                
+                // Mostrar texto nos previews
+                document.getElementById('previewColorida').innerHTML = 'Sem logo';
+                document.getElementById('previewPB').innerHTML = 'Sem logo';
+            }
+        }
+
+        // Baixar logo
+        function baixarLogo(tipo) {
+            if (!clienteAtual) return;
+
+            let dataUrl;
+            let fileName;
+
+            if (tipo === 'colorida') {
+                if (!clienteAtual.logoBase64) {
+                    alert('Logo colorida não disponível!');
+                    return;
+                }
+                dataUrl = clienteAtual.logoBase64;
+                fileName = `logo-colorida-${clienteAtual.nome || 'cliente'}.png`;
+            } else {
+                if (!logoPBBase64) {
+                    alert('Logo PB não disponível!');
+                    return;
+                }
+                dataUrl = logoPBBase64;
+                fileName = `logo-pb-${clienteAtual.nome || 'cliente'}.png`;
+            }
+
+            const link = document.createElement('a');
+            link.download = fileName;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+
+            window.location.href = 'baixada.html';
+
+        }
+
+        // Ir para tela do cartão
+        function irParaCartao() {
+            window.location.href = 'cartao.html';
+        }
+
+
+
+        // Função para limpar "sim," e "não," em qualquer variação
+function limparNomeEmpresa(nome) {
+    if (!nome) return '';
+    
+    let nomeLimpo = nome;
+    
+    // Padrões para remover "sim," e "não," em qualquer variação (case insensitive)
+    const padroesSim = [
+        /^sim,\s*/i,           // sim, no início
+        /\ssim,\s*/i,          // sim, no meio
+        /,\s*sim,\s*/i,        // ,sim,
+        /sim\s*$/i,            // sim no final
+        /sim\s*,\s*/i,         // sim ,
+        /^sim\s*$/i            // apenas sim
+    ];
+    
+    const padroesNao = [
+        /^não,\s*/i,           // não, no início
+        /^nao,\s*/i,           // nao, no início
+        /\snão,\s*/i,          // não, no meio
+        /\snao,\s*/i,          // nao, no meio
+        /,\s*não,\s*/i,        // ,não,
+        /,\s*nao,\s*/i,        // ,nao,
+        /não\s*$/i,            // não no final
+        /nao\s*$/i,            // nao no final
+        /não\s*,\s*/i,         // não ,
+        /nao\s*,\s*/i,         // nao ,
+        /^não\s*$/i,           // apenas não
+        /^nao\s*$/i,           // apenas nao
+        /\bnão\b/i,            // não como palavra isolada
+        /\bnao\b/i             // nao como palavra isolada
+    ];
+    
+    // Aplicar remoção de todos os padrões de "sim"
+    for (const padrao of padroesSim) {
+        nomeLimpo = nomeLimpo.replace(padrao, '');
+    }
+    
+    // Aplicar remoção de todos os padrões de "não"
+    for (const padrao of padroesNao) {
+        nomeLimpo = nomeLimpo.replace(padrao, '');
+    }
+    
+    // Limpar vírgulas extras, espaços duplicados e trim
+    nomeLimpo = nomeLimpo
+        .replace(/\s*,\s*/g, ',')
+        .replace(/,,+/g, ',')
+        .replace(/^\s*,\s*/, '')
+        .replace(/\s*,\s*$/, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    
+    if (nomeLimpo === '' || nomeLimpo === ',' || nomeLimpo === ' ') {
+        return '';
+    }
+    
+    return nomeLimpo;
+}
+
+// Função para obter o nome a ser exibido
+function obterNomeExibicao(cliente) {
+    let empresaNome = cliente.empresaNome || '';
+    let nomePessoa = cliente.nome || '';
+    
+    let empresaNomeLimpo = limparNomeEmpresa(empresaNome);
+    
+    if (empresaNomeLimpo && empresaNomeLimpo !== '' && empresaNomeLimpo.length <= 25) {
+        return empresaNomeLimpo;
+    }
+    
+    if (nomePessoa && nomePessoa !== '' && nomePessoa.length <= 25) {
+        return nomePessoa;
+    }
+    
+    if (empresaNomeLimpo && empresaNomeLimpo !== '') {
+        return empresaNomeLimpo.substring(0, 23);
+    }
+    
+    if (nomePessoa && nomePessoa !== '') {
+        return nomePessoa.substring(0, 23);
+    }
+    
+    return 'Nome da Empresa';
+}
+    </script>
+</body>
+</html>

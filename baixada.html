@@ -1,0 +1,283 @@
+
+       <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Logomarca - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+     
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+               text-align: center;
+ margin: 0 auto;
+        
+        }
+
+        /* HEADER */
+        .header {
+            align-items: center;
+            height: 100px;
+            margin-bottom: 10px;
+            background-color: #2f959a;
+            color: white;
+        }
+
+
+       
+
+
+        /* FORMULÁRIO */
+        .form-section {
+            margin: 60px auto;
+            max-width: 300px;
+        }
+
+        .form-group {
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .form-group label {
+            color: #3A8F90;
+            font-size: 1.2rem;
+            font-weight: 600;
+            width: 150px;
+        }
+
+        .form-group input {
+            flex: 1;
+            height: 40px;
+            border: 2px solid #3A8F90;
+            background-color: white;
+            border-radius: 4px;
+            padding: 0 15px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(58, 143, 144, 0.2);
+        }
+
+        /* BOTÃO PRINCIPAL */
+        .btn-container {
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: none;
+            border: none;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #3A8F90;
+            font-weight: 600;
+            transition: transform 0.2s;
+            padding: 20px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary .emoji {
+            font-size: 12rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary .arrow {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+  
+
+        /* ERROR */
+        .error {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            display: none;
+            border-radius: 10px;
+            position: fixed;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: -400px;
+            border-left: 4px solid #c53030;
+        }
+
+        /* RODAPÉ */
+        .footer {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+            padding: 20px 0;
+        }
+
+        .footer-logo {
+            width: 90px;
+            height: 40px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            border-radius: 4px;
+        }
+
+
+
+
+
+        .bg-image {
+    position: fixed;
+    inset: 0;
+    z-index: -1; /* fica atrás de tudo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bg-image img {
+    width: 500px; /* controla manualmente */
+    height: 700px;
+  
+}
+
+.logos img{
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+}
+
+.logos{
+    margin: 0 auto;
+        text-align: center;
+
+}
+  /* BOTÃO PRINCIPAL */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+  .btn-primary {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #3A8F90;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary .emoji {
+            font-size: 8rem;
+        }
+
+        .btn-primary .arrow {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+
+
+        <div class="back1">
+            <img src="back1.png">
+        </div>
+
+
+             <!-- BOTÃO -->
+        <div class="btn-container">
+            <button class="btn-primary">
+                <span class="emoji">😍</span>
+                <br>
+           
+               
+            </button>
+
+            
+        </div>
+
+             <span style="  background: none;
+            border: none;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #3A8F90;
+            font-weight: 600;
+            transition: transform 0.2s;
+            padding: 20px;"> Logo baixada!</span>
+
+
+        <div class="btn-container">
+            <button class="btn-primary" onclick="voltar()">
+                <span class="arrow" style="transform: rotate(90deg);">▼</span>
+
+                <span>Voltar</span>
+
+</button>
+        </div>
+
+        <div class="logos">
+            <img src="logos.png">
+        </div>
+
+      
+    </div>
+
+    <script>
+       
+
+
+        function voltar(){
+                    window.location.href = 'visualizacao.html';
+
+        }
+        
+        
+  setTimeout(() => {
+    window.location.href = "visualizacao.html";
+  }, 4000); // 4000ms = 4 segundos
+
+    </script>
+</body>
+</html>
+
+   

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+
+    <title>Projeto Logomarca - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+     
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+               text-align: center;
+ margin: 0 auto;
+        
+        }
+
+        /* HEADER */
+        .header {
+            align-items: center;
+            height: 100px;
+            margin-bottom: 10px;
+            background-color: #2f959a;
+            color: white;
+        }
+
+        .header-left {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 0 8px 8px 0;
+
+              font-family: "Allura", cursive;
+  font-weight: 400;
+  font-style: normal;
+            
+        }
+
+       
+
+        .logo-gerar {
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border: 2px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* FORMULÁRIO */
+        .form-section {
+            margin: 60px auto;
+            max-width: 300px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .form-group label {
+            color: #3A8F90;
+            font-size: 1.2rem;
+            font-weight: 600;
+            width: 150px;
+        }
+
+        .form-group input {
+            flex: 1;
+            height: 40px;
+            border: 2px solid #3A8F90;
+            background-color: white;
+            border-radius: 4px;
+            padding: 0 15px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(58, 143, 144, 0.2);
+        }
+
+        /* BOTÃO PRINCIPAL */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+            margin-bottom: 100px;
+        }
+
+        .btn-primary {
+            background: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: #3A8F90;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary .emoji {
+            font-size: 1.5rem;
+        }
+
+        .btn-primary .arrow {
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* LOADING */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #3A8F90;
+            font-weight: bold;
+        }
+
+        /* ERROR */
+        .error {
+            background: #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            display: none;
+            border-radius: 10px;
+            position: fixed;
+            margin: 0 auto;
+            text-align: center;
+            margin-top: -400px;
+            border-left: 4px solid #c53030;
+        }
+
+        /* RODAPÉ */
+        .footer {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+            padding: 20px 0;
+        }
+
+        .footer-logo {
+            width: 90px;
+            height: 40px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #333;
+            border-radius: 4px;
+        }
+
+
+
+
+
+        .bg-image {
+    position: fixed;
+    inset: 0;
+    z-index: -1; /* fica atrás de tudo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bg-image img {
+    width: 500px; /* controla manualmente */
+    height: 700px;
+  
+}
+
+.logos img{
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.logos{
+    margin: 0 auto;
+        text-align: center;
+
+}
+
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+
+
+        <div class="back1">
+            <img src="back1.png">
+        </div>
+
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <h1 style=' font-family: "Source Sans 3", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;'>Projeto Logomarca</h1>
+            </div>
+         
+        </header>
+
+        <!-- FORMULÁRIO -->
+        <div class="form-section">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Digite seu email">
+            </div>
+        </div>
+
+        <!-- LOADING -->
+        <div class="loading" id="loading">
+            <p>Buscando seus dados...</p>
+        </div>
+
+        <!-- ERROR -->
+        <div class="error" id="error">
+            <p id="errorMessage">Cliente não encontrado. Verifique o email digitado.</p>
+        </div>
+
+        <!-- BOTÃO -->
+        <div class="btn-container">
+            <button class="btn-primary" onclick="buscarCliente()">
+                <span class="emoji">🙂</span>
+                <span>Ver Logo</span>
+<span class="arrow" style="transform: rotate(270deg);">▼</span>
+            </button>
+        </div>
+
+        <div class="logos">
+            <img src="logos.png">
+        </div>
+
+      
+    </div>
+
+    <script>
+        // Configuração do Firebase
+        const FIREBASE_URL = "https://appatividades-7450d-default-rtdb.firebaseio.com/clientes-logomarca.json";
+        
+        // Elementos da interface
+        const emailInput = document.getElementById('email');
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        
+        // Permitir busca com Enter
+        emailInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                buscarCliente();
+            }
+        });
+        
+        // Buscar cliente por email
+        async function buscarCliente() {
+            const email = emailInput.value.trim().toLowerCase();
+            
+            if (!email) {
+                mostrarErro('Por favor, digite seu email.');
+                return;
+            }
+            
+            loading.style.display = 'block';
+            error.style.display = 'none';
+            
+            try {
+                const response = await fetch(FIREBASE_URL);
+                const data = await response.json();
+                
+                if (!data) {
+                    mostrarErro('Nenhum cliente encontrado.');
+                    return;
+                }
+                
+                // Buscar cliente pelo email
+                const clientes = Object.values(data);
+                const clienteAtual = clientes.find(cliente => 
+                    cliente.email && cliente.email.toLowerCase() === email
+                );
+                
+                if (!clienteAtual) {
+                    mostrarErro('Cliente não encontrado. Verifique o email digitado.');
+                    return;
+                }
+                
+                // Salvar dados no sessionStorage
+                sessionStorage.setItem('clienteData', JSON.stringify(clienteAtual));
+                
+                // Redirecionar para tela de visualização
+                window.location.href = 'visualizacao.html';
+                
+            } catch (error) {
+                console.error('Erro ao buscar cliente:', error);
+                mostrarErro('Erro ao buscar dados. Tente novamente.');
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+        
+        // Mostrar erro
+        function mostrarErro(mensagem) {
+            error.style.display = 'block';
+            document.getElementById('errorMessage').textContent = mensagem;
+        }
+    </script>
+</body>
+</html>
