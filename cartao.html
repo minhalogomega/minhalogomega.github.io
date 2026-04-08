@@ -759,32 +759,63 @@ margin: 0 auto;
             telElement.innerHTML = `<i class="fa-brands fa-whatsapp"></i> ${cliente.telefone}` || '(11) 99999-9999';
             
             // VERIFICAR SE TEM LOGO
-            if (cliente.logoBase64) {
-                // Tem logo - processar normalmente
-                logoPBBase64 = await converterParaPretoBranco(cliente.logoBase64);
-                
-                // Logo 1 e 2 - normais
-                cardLogo1.src = cliente.logoBase64;
-                cardLogo1.style.display = 'block';
-                
-                cardLogo2.src = cliente.logoBase64;
-                cardLogo2.style.display = 'block';
-                
-                // Logo 3 - preto e branco
-                cardLogo3.src = logoPBBase64;
-                cardLogo3.style.display = 'block';
-            } else {
+         // VERIFICAR SE TEM LOGO (Cloudinary)
+const urlImagem = cliente.logoUrl || cliente.logoBase64; // Suporte aos dois formatos
 
-                window.location.href = 'semlogo.html';
-
-                // NÃO TEM LOGO - mostrar alerta
-                alert('⚠️ ATENÇÃO: Este cliente não possui logo cadastrada!');
-                
-                // Esconder os elementos de logo
-                cardLogo1.style.display = 'none';
-                cardLogo2.style.display = 'none';
-                cardLogo3.style.display = 'none';
-            }
+if (urlImagem) {
+    // Se for URL do Cloudinary, precisa carregar como imagem primeiro
+    if (urlImagem.startsWith('http')) {
+        // Carregar imagem do Cloudinary
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        
+        await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = urlImagem;
+        });
+        
+        // Converter para base64 para poder manipular
+        const canvas = document.createElement('canvas');
+        canvas.width = img.width;
+        canvas.height = img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const base64 = canvas.toDataURL('image/png');
+        
+        // Converter para preto e branco
+        logoPBBase64 = await converterParaPretoBranco(base64);
+        
+        // Usar a URL original do Cloudinary (mais eficiente)
+        cardLogo1.src = urlImagem;
+        cardLogo1.style.display = 'block';
+        
+        cardLogo2.src = urlImagem;
+        cardLogo2.style.display = 'block';
+        
+        // Logo 3 - preto e branco (usando base64 convertido)
+        cardLogo3.src = logoPBBase64;
+        cardLogo3.style.display = 'block';
+    } else {
+        // Já é base64 (formato antigo)
+        logoPBBase64 = await converterParaPretoBranco(urlImagem);
+        
+        cardLogo1.src = urlImagem;
+        cardLogo1.style.display = 'block';
+        
+        cardLogo2.src = urlImagem;
+        cardLogo2.style.display = 'block';
+        
+        cardLogo3.src = logoPBBase64;
+        cardLogo3.style.display = 'block';
+    }
+} else {
+    window.location.href = 'semlogo.html';
+    // Esconder os elementos de logo
+    cardLogo1.style.display = 'none';
+    cardLogo2.style.display = 'none';
+    cardLogo3.style.display = 'none';
+}
         }
 
         // FUNÇÃO: Baixar tudo

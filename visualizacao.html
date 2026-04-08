@@ -6,8 +6,8 @@
     <title>Projeto Logomarca - Visualização</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         * {
@@ -17,38 +17,30 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-    body {
-   
-
-    justify-content: center;
-    align-items: center;
-margin: 0 auto;
-     
+        body {
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
         }
 
         .container {
             margin: 0 auto;
-            text-align: ce;
+            text-align: center;
             width: 100%;
             max-width: 500px;
-        
         }
 
         /* HEADER */
         .header {
             align-items: center;
-
             height: 100%;
             padding: 6px;
-
-              margin-top: 40px;
-      background-color: #2f959a;    
-
-        width: 70%;
+            margin-top: 40px;
+            background-color: #2f959a;    
+            width: 70%;
         }
 
         .header-left {
-            
             padding-left: 30px;
             border-radius: 0 8px 8px 0;
         }
@@ -65,8 +57,6 @@ margin: 0 auto;
             font-size: 12px;
             opacity: 0.9;
         }
-
-    
 
         /* INFORMAÇÕES DO CLIENTE */
         .client-info {
@@ -189,101 +179,81 @@ margin: 0 auto;
             line-height: 1;
         }
 
-        /* RODAPÉ */
-        .footer {
-            display: flex;
-            justify-content: center;
-            gap: 80px;
-            margin-top: 60px;
-            padding: 20px 0;
-        }
-
-        .footer-logo {
-            width: 90px;
-            height: 40px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: #333;
-            border-radius: 4px;
-        }
-
-        /* LOADING TEMP */
-        .loading-temp {
+        /* LOADING */
+        .loading-overlay {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 10000;
         }
 
-        .bg-image {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .loading-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
 
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2f959a;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
 
-.bg-image img {
-    width: 500px;
-    height: 700px;
-  
-}
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
+        .logos img {
+            margin: 0 auto;
+            width: 300px;
+            text-align: center;
+        }
 
+        .logos {
+            margin: 0 auto;
+            text-align: center;
+        }
 
-.logos img{
-    margin: 0 auto;
-    width: 300px;
-    text-align: center;
-}
+        .header-right {
+            margin-left: 20px;
+            cursor: pointer;
+        }
 
-.logos{
-    margin: 0 auto;
-        text-align: center;
-
-}
-.header-right{
-    margin-left: 20px;
-}
-
-
-
+        .error-message {
+            color: #e53e3e;
+            font-size: 12px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <!-- HEADER -->
-
         <div style="display: flex;"> 
-        <header class="header">
-            <div class="header-left">
-                <h1 style=' font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;'>Projeto Logomarca</h1>
-
-                <p id="nomeAlunoHeader">Carregando...</p>
-            </div>
-               
-        </header>
-
-         <div class="header-right" onclick="paginainicial()">
-            
-                    <img style="width: 95px; height: 70px; margin-top: 30px; border: 2px solid #817f7f" src="gerar.png" >
+            <header class="header">
+                <div class="header-left">
+                    <h1 style='font-family: "Source Sans 3", sans-serif; font-optical-sizing: auto; font-weight: 400; font-style: normal;'>Projeto Logomarca</h1>
+                    <p id="nomeAlunoHeader">Carregando...</p>
                 </div>
+            </header>
 
+            <div class="header-right" onclick="paginainicial()">
+                <img style="width: 95px; height: 70px; margin-top: 30px; border: 2px solid #817f7f" src="gerar.png" alt="Gerar">
             </div>
+        </div>
 
         <!-- INFORMAÇÕES DO CLIENTE -->
         <div class="client-info" style="display: none;">
@@ -311,7 +281,7 @@ margin: 0 auto;
             <!-- CARD 1 - LOGO COLORIDA -->
             <div class="card-row">
                 <div class="preview-box" id="previewColorida">
-                    <img id="logoColoridaImg" src="" alt="Logo Colorida" style="display: none;">
+                    <img id="logoColoridaImg" src="" alt="Logo Colorida" style="display: none;" crossorigin="anonymous">
                 </div>
                 <button class="download-btn" onclick="baixarLogo('colorida')">
                     <span style="color: #807f7f">Download Color</span>
@@ -322,10 +292,10 @@ margin: 0 auto;
             <!-- CARD 2 - LOGO PB -->
             <div class="card-row">
                 <div class="preview-box" id="previewPB">
-                    <img id="logoPBImg" src="" alt="Logo PB" style="display: none;">
+                    <img id="logoPBImg" src="" alt="Logo PB" style="display: none;" crossorigin="anonymous">
                 </div>
                 <button class="download-btn" onclick="baixarLogo('pb')">
-                    <span  style="color: #807f7f">Download PB</span>
+                    <span style="color: #807f7f">Download PB</span>
                     <span class="arrow">▼</span>
                 </button>
             </div>
@@ -335,30 +305,46 @@ margin: 0 auto;
         <div class="cartao-btn-container">
             <button class="cartao-btn" onclick="irParaCartao()">
                 <span style="color: #807f7f">Cartão de Visita</span>
-<span class="arrow" style="transform: rotate(270deg);">▼</span>
-
-
-</button>
+                <span class="arrow" style="transform: rotate(270deg);">▼</span>
+            </button>
         </div>
-
-        
     </div>
 
-    
-        <div class="logos">
-            <img src="logos.png">
-        </div>
+    <div class="logos">
+        <img src="logos.png" alt="Logos">
+    </div>
 
     <script>
         let clienteAtual = null;
         let logoPBBase64 = null;
+        let logoColoridaBase64 = null;
+        let carregando = false;
+
+        // Mostrar loading
+        function mostrarLoading(mensagem = 'Carregando...') {
+            const overlay = document.createElement('div');
+            overlay.id = 'loadingOverlay';
+            overlay.className = 'loading-overlay';
+            overlay.innerHTML = `
+                <div class="loading-box">
+                    <div class="loading-spinner"></div>
+                    <p>${mensagem}</p>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+        }
+
+        // Esconder loading
+        function esconderLoading() {
+            const overlay = document.getElementById('loadingOverlay');
+            if (overlay) overlay.remove();
+        }
 
         // Carregar dados do cliente
         document.addEventListener('DOMContentLoaded', function() {
             const clienteData = sessionStorage.getItem('clienteData');
             
             if (!clienteData) {
-
                 alert('Nenhum dado de cliente encontrado. Volte para a tela inicial.');
                 window.location.href = 'pag1.html';
                 return;
@@ -367,7 +353,8 @@ margin: 0 auto;
             clienteAtual = JSON.parse(clienteData);
             
             // Atualizar header
-document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clienteAtual);            
+            document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clienteAtual);
+            
             // Atualizar informações
             document.getElementById('clientName').textContent = clienteAtual.nome || 'Não informado';
             document.getElementById('clientCompany').textContent = clienteAtual.empresaNome || clienteAtual.nomeFantasia || 'Não informado';
@@ -378,16 +365,63 @@ document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clien
             carregarLogos();
         });
 
-
-        function paginainicial(){
-                            window.location.href = 'pag1.html';
-
+        function paginainicial() {
+            window.location.href = 'pag1.html';
         }
 
-        // Converter para preto e branco
+        // Função para obter a URL da imagem (suporta tanto logoUrl quanto logoBase64)
+        function obterUrlImagem() {
+            // Priorizar logoUrl (Cloudinary)
+            if (clienteAtual.logoUrl) {
+                return clienteAtual.logoUrl;
+            }
+            // Fallback para logoBase64 (compatibilidade)
+          
+            return null;
+        }
+
+        // Converter URL de imagem para Base64 (necessário para download e PB)
+        async function urlParaBase64(url) {
+            return new Promise((resolve, reject) => {
+                // Se já for base64, retorna diretamente
+                if (url.startsWith('data:image')) {
+                    resolve(url);
+                    return;
+                }
+
+                const img = new Image();
+                img.crossOrigin = 'anonymous'; // Importante para Cloudinary
+                
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                    
+                    try {
+                        const base64 = canvas.toDataURL('image/png');
+                        resolve(base64);
+                    } catch (e) {
+                        reject(e);
+                    }
+                };
+                
+                img.onerror = function() {
+                    reject(new Error('Erro ao carregar imagem'));
+                };
+                
+                img.src = url;
+            });
+        }
+
+        // Converter para preto e branco (a partir de base64)
         async function converterParaPretoBranco(base64) {
             return new Promise((resolve) => {
                 const img = new Image();
+                img.crossOrigin = 'anonymous';
+                
                 img.onload = function() {
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
@@ -415,6 +449,7 @@ document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clien
                     ctx.putImageData(imageData, 0, 0);
                     resolve(canvas.toDataURL('image/png'));
                 };
+                
                 img.src = base64;
             });
         }
@@ -423,48 +458,72 @@ document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clien
         async function carregarLogos() {
             const logoColoridaImg = document.getElementById('logoColoridaImg');
             const logoPBImg = document.getElementById('logoPBImg');
+            const previewColorida = document.getElementById('previewColorida');
+            const previewPB = document.getElementById('previewPB');
             
-            if (clienteAtual.logoBase64) {
-                // Mostrar logo colorida
-                logoColoridaImg.src = clienteAtual.logoBase64;
-                logoColoridaImg.style.display = 'block';
+            const urlImagem = obterUrlImagem();
+            
+            if (urlImagem) {
+                mostrarLoading('Carregando logos...');
                 
-                // Converter e mostrar logo PB
-                logoPBBase64 = await converterParaPretoBranco(clienteAtual.logoBase64);
-                logoPBImg.src = logoPBBase64;
-                logoPBImg.style.display = 'block';
+                try {
+                    // Se for URL do Cloudinary, converter para base64 primeiro
+                    if (urlImagem.startsWith('http')) {
+                        console.log('Convertendo URL do Cloudinary para base64...');
+                        logoColoridaBase64 = await urlParaBase64(urlImagem);
+                    } else {
+                        // Já é base64
+                        logoColoridaBase64 = urlImagem;
+                    }
+                    
+                    // Mostrar logo colorida
+                    logoColoridaImg.src = logoColoridaBase64;
+                    logoColoridaImg.style.display = 'block';
+                    
+                    // Converter e mostrar logo PB
+                    console.log('Convertendo para preto e branco...');
+                    logoPBBase64 = await converterParaPretoBranco(logoColoridaBase64);
+                    logoPBImg.src = logoPBBase64;
+                    logoPBImg.style.display = 'block';
+                    
+                    esconderLoading();
+                    
+                } catch (error) {
+                    console.error('Erro ao carregar imagens:', error);
+                    esconderLoading();
+                    
+                    // Mostrar mensagem de erro
+                    previewColorida.innerHTML = '<span style="color: #e53e3e;">Erro ao carregar</span>';
+                    previewPB.innerHTML = '<span style="color: #e53e3e;">Erro ao carregar</span>';
+                }
             } else {
                 // Não tem logo
                 window.location.href = 'semlogo.html';
-
-                
-                // Mostrar texto nos previews
-                document.getElementById('previewColorida').innerHTML = 'Sem logo';
-                document.getElementById('previewPB').innerHTML = 'Sem logo';
             }
         }
 
         // Baixar logo
-        function baixarLogo(tipo) {
+        async function baixarLogo(tipo) {
             if (!clienteAtual) return;
 
             let dataUrl;
             let fileName;
+            const nomeCliente = (clienteAtual.nome || 'cliente').replace(/[^a-zA-Z0-9]/g, '_');
 
             if (tipo === 'colorida') {
-                if (!clienteAtual.logoBase64) {
+                if (!logoColoridaBase64) {
                     alert('Logo colorida não disponível!');
                     return;
                 }
-                dataUrl = clienteAtual.logoBase64;
-                fileName = `logo-colorida-${clienteAtual.nome || 'cliente'}.png`;
+                dataUrl = logoColoridaBase64;
+                fileName = `logo-colorida-${nomeCliente}.png`;
             } else {
                 if (!logoPBBase64) {
                     alert('Logo PB não disponível!');
                     return;
                 }
                 dataUrl = logoPBBase64;
-                fileName = `logo-pb-${clienteAtual.nome || 'cliente'}.png`;
+                fileName = `logo-pb-${nomeCliente}.png`;
             }
 
             const link = document.createElement('a');
@@ -474,9 +533,7 @@ document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clien
             link.click();
             document.body.removeChild(link);
 
-
             window.location.href = 'baixada.html';
-
         }
 
         // Ir para tela do cartão
@@ -484,92 +541,86 @@ document.getElementById('nomeAlunoHeader').textContent = obterNomeExibicao(clien
             window.location.href = 'cartao.html';
         }
 
-
-
         // Função para limpar "sim," e "não," em qualquer variação
-function limparNomeEmpresa(nome) {
-    if (!nome) return '';
-    
-    let nomeLimpo = nome;
-    
-    // Padrões para remover "sim," e "não," em qualquer variação (case insensitive)
-    const padroesSim = [
-        /^sim,\s*/i,           // sim, no início
-        /\ssim,\s*/i,          // sim, no meio
-        /,\s*sim,\s*/i,        // ,sim,
-        /sim\s*$/i,            // sim no final
-        /sim\s*,\s*/i,         // sim ,
-        /^sim\s*$/i            // apenas sim
-    ];
-    
-    const padroesNao = [
-        /^não,\s*/i,           // não, no início
-        /^nao,\s*/i,           // nao, no início
-        /\snão,\s*/i,          // não, no meio
-        /\snao,\s*/i,          // nao, no meio
-        /,\s*não,\s*/i,        // ,não,
-        /,\s*nao,\s*/i,        // ,nao,
-        /não\s*$/i,            // não no final
-        /nao\s*$/i,            // nao no final
-        /não\s*,\s*/i,         // não ,
-        /nao\s*,\s*/i,         // nao ,
-        /^não\s*$/i,           // apenas não
-        /^nao\s*$/i,           // apenas nao
-        /\bnão\b/i,            // não como palavra isolada
-        /\bnao\b/i             // nao como palavra isolada
-    ];
-    
-    // Aplicar remoção de todos os padrões de "sim"
-    for (const padrao of padroesSim) {
-        nomeLimpo = nomeLimpo.replace(padrao, '');
-    }
-    
-    // Aplicar remoção de todos os padrões de "não"
-    for (const padrao of padroesNao) {
-        nomeLimpo = nomeLimpo.replace(padrao, '');
-    }
-    
-    // Limpar vírgulas extras, espaços duplicados e trim
-    nomeLimpo = nomeLimpo
-        .replace(/\s*,\s*/g, ',')
-        .replace(/,,+/g, ',')
-        .replace(/^\s*,\s*/, '')
-        .replace(/\s*,\s*$/, '')
-        .replace(/\s+/g, ' ')
-        .trim();
-    
-    if (nomeLimpo === '' || nomeLimpo === ',' || nomeLimpo === ' ') {
-        return '';
-    }
-    
-    return nomeLimpo;
-}
+        function limparNomeEmpresa(nome) {
+            if (!nome) return '';
+            
+            let nomeLimpo = nome;
+            
+            const padroesSim = [
+                /^sim,\s*/i,
+                /\ssim,\s*/i,
+                /,\s*sim,\s*/i,
+                /sim\s*$/i,
+                /sim\s*,\s*/i,
+                /^sim\s*$/i
+            ];
+            
+            const padroesNao = [
+                /^não,\s*/i,
+                /^nao,\s*/i,
+                /\snão,\s*/i,
+                /\snao,\s*/i,
+                /,\s*não,\s*/i,
+                /,\s*nao,\s*/i,
+                /não\s*$/i,
+                /nao\s*$/i,
+                /não\s*,\s*/i,
+                /nao\s*,\s*/i,
+                /^não\s*$/i,
+                /^nao\s*$/i,
+                /\bnão\b/i,
+                /\bnao\b/i
+            ];
+            
+            for (const padrao of padroesSim) {
+                nomeLimpo = nomeLimpo.replace(padrao, '');
+            }
+            
+            for (const padrao of padroesNao) {
+                nomeLimpo = nomeLimpo.replace(padrao, '');
+            }
+            
+            nomeLimpo = nomeLimpo
+                .replace(/\s*,\s*/g, ',')
+                .replace(/,,+/g, ',')
+                .replace(/^\s*,\s*/, '')
+                .replace(/\s*,\s*$/, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+            
+            if (nomeLimpo === '' || nomeLimpo === ',' || nomeLimpo === ' ') {
+                return '';
+            }
+            
+            return nomeLimpo;
+        }
 
-// Função para obter o nome a ser exibido
-function obterNomeExibicao(cliente) {
-    let empresaNome = cliente.empresaNome || '';
-    let nomePessoa = cliente.nome || '';
-    
-    let empresaNomeLimpo = limparNomeEmpresa(empresaNome);
-    
-    if (empresaNomeLimpo && empresaNomeLimpo !== '' && empresaNomeLimpo.length <= 25) {
-        return empresaNomeLimpo;
-    }
-    
-    if (nomePessoa && nomePessoa !== '' && nomePessoa.length <= 25) {
-        return nomePessoa;
-    }
-    
-    if (empresaNomeLimpo && empresaNomeLimpo !== '') {
-        return empresaNomeLimpo.substring(0, 23);
-    }
-    
-    if (nomePessoa && nomePessoa !== '') {
-        return nomePessoa.substring(0, 23);
-    }
-    
-    return 'Nome da Empresa';
-}
+        // Função para obter o nome a ser exibido
+        function obterNomeExibicao(cliente) {
+            let empresaNome = cliente.empresaNome || '';
+            let nomePessoa = cliente.nome || '';
+            
+            let empresaNomeLimpo = limparNomeEmpresa(empresaNome);
+            
+            if (empresaNomeLimpo && empresaNomeLimpo !== '' && empresaNomeLimpo.length <= 25) {
+                return empresaNomeLimpo;
+            }
+            
+            if (nomePessoa && nomePessoa !== '' && nomePessoa.length <= 25) {
+                return nomePessoa;
+            }
+            
+            if (empresaNomeLimpo && empresaNomeLimpo !== '') {
+                return empresaNomeLimpo.substring(0, 23);
+            }
+            
+            if (nomePessoa && nomePessoa !== '') {
+                return nomePessoa.substring(0, 23);
+            }
+            
+            return 'Nome da Empresa';
+        }
     </script>
 </body>
 </html>
